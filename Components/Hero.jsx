@@ -1,157 +1,103 @@
-// import React from 'react';
-// import heroimg from './heroimg.png'
-// // import heroimg from 'E:/HealthMudraa_Nextjs/hm_frontend/Components/heroimg.png'
-// import Link from 'next/link';
-
-// export default function Hero() {
-//   return (<>
-//   <style>
-//         {`
-
-		
-// .col-lg-77{
-// 	max-width:30vw
-// }
-// .col-lg-55{
-// 	max-width:45vw;
-// }
-
-		
-//           @media (max-width: 850px) {
-
-// 			.neww{
-
-// 				display:flex;
-// 				justify-content:center;
-// 				align-items:center;
-// 				width:100%;
-			
-// 			}
-
-// 			.hearopart{
-// 				width:80%;
-// 				display:flex;
-// 				flex-direction:column;
-// 			}
-
-// 			.col-lg-77{
-// 				max-width:100%;
-// 			}
-// 			.col-lg-55{
-// 				max-width:100%;
-// 			}
-         
-//           }
-    
-//         `}
-//       </style>
- 
-//     <div style={{display:'flex',justifyContent:'center'}}>
-       
-  
-    
-// <div className='neww'>
-// 	<div class="heropart row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3">
-// 		<div class="col-lg-77 p-3 p-lg-5 pt-lg-3">
-// 			<div class="lc-block mb-3">
-// 				<div editable="rich">
-// 					<p style={{fontSize:'3.5rem',letterSpacing:'3px'}} class="fw-bold display-4">Watch<br/> Connect <br/> Heal<p></p>
-// 						<p></p>
-// 					</p>
-// 				</div>
-// 			</div>
-
-// 			<div class="lc-block mb-3 my-4">
-// 				<div editable="rich ">
-// 					<p class="lead">Watch expert doctor videos, book appointments, and get the treatment you need.
-// 					</p>
-// 				</div>
-// 			</div>
-
-// 			<div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start my-4">
-//                 <Link class="btn btn-primary px-4 me-md-2" href="/videos" role="button" style={{padding:'0.7rem',backgroundColor:'#133682'}}>Watch Videos</Link>
-// 				<a class="btn btn-outline-secondary px-4" href="#" role="button" style={{padding:'0.7rem',color:'#133682',backgroundColor:'white'}}>Consult Doctor</a>
-// 			</div>
-// 		</div>
-// 		<div class="col-lg-55 " >
-// 			<div class="lc-block"><img class="rounded-start w-100" src="/heroimg.png" alt="Photo by Diego PH" width="720"/></div>
-// 		</div>
-// 	</div>
-// </div>
- 
- 
-  
-//     </div>
-// 	</>
-//   )
-// }
-
-
-// components/Hero.js
-import { AutoAwesome, Search } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 import { Box, IconButton, InputBase, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-const images = [
-  { main: "/HeroMockup/img1.jpg", preview: "/HeroMockup/img1_prev.webp" },
-  { main: "/HeroMockup/img2.jpg", preview: "/HeroMockup/img2_prev.webp" },
-  { main: "/HeroMockup/img3.jpg", preview: "/HeroMockup/img3_prev.webp" },
-];
+import Image from "next/image";
+import handImage from "../assets/hand.png";
+import herodrop from "../assets/herodrop.png";
 
 const primaryColor = "#1B5AE3";
 
+const TypingEffect = ({ text, speed }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    }
+  }, [index, text, speed]);
+
+  return <span>{displayedText}</span>;
+};
+
 const Hero = () => {
   const router = useRouter();
-  const [searchValue, setSearchValue] = useState(""); // Fixed typo here
+  const [searchValue, setSearchValue] = useState("");
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchValue.trim()) {
-      router.push(`/search/${searchValue}`);
-    }
+    router.push(`/search/${searchValue}`);
   };
 
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
+  const handleSearchClick = () => {
+    setIsSearchClicked(true);
+  };
+
   return (
     <Box
-      borderRadius={2}
-      margin={{ xs: 0, md: 4 }}
       sx={{
-        boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
-        background: "#FFFCFC",
+        background: isSmallScreen
+          ? "linear-gradient(180deg, #FFF 0%, #ECF2FF 100%)"
+          : "linear-gradient(180deg, #FFF 0%, #ECF2FF 100%)",
+        width: "100%",
+        paddingBottom: { xs: "40px" },
       }}
     >
       {/* Text Info */}
-      <Box sx={{ paddingTop: 6, textAlign: "center" }}>
+      <Box
+        sx={{
+          paddingTop: 10,
+          textAlign: "center",
+          marginBottom: isSearchClicked
+            ? { xs: "40px", sm: "50px", md: "60px" }
+            : { xs: "24px", sm: "24px", md: "24px" },
+          transition: "margin-bottom 0.5s ease",
+        }}
+      >
         <Typography
           variant="h1"
-          fontSize={{ xs: "32px", sm: "32px", md: "64px" }}
-          fontWeight="600"
-          letterSpacing="3.2px"
-          lineHeight={{ xs: "40px", sm: "40px", md: "72px" }}
+          fontSize={{ xs: "18px", sm: "32px", md: "68px" }}
+          fontWeight={{ xs: 600, sm: "540" }}
+          fontFamily="Poppins"
+          lineHeight="normal"
           color="#000"
           component="h2"
+          sx={{ textAlign: "center" }}
         >
-          Watch &gt; Connect {isSmallScreen && <br />} &gt; Heal.
+          Any Questions to Ask Doctors?
         </Typography>
 
         <Typography
           variant="h2"
-          color="#818181"
-          fontSize={{ xs: "16px", sm: "32px", md: "36px" }}
-          fontWeight="500"
-          lineHeight={{ xs: "54px", sm: "72px" }}
-          letterSpacing="1.8px"
+          fontSize={{ xs: "12px", sm: "32px", md: "37px" }}
+          fontFamily="Poppins"
+          fontWeight={{ xs: "430", md: "530" }}
+          lineHeight={{ xs: "1.2", md: "normal" }}
+          color="#000"
+          sx={{
+            textAlign: "center",
+            marginTop: "8px",
+            whiteSpace: { xs: "pre-wrap", md: "normal" },
+          }}
         >
-          <span style={{ color: primaryColor }}>Expert </span> Doctors + AI
-          <span style={{ color: primaryColor }}> assistant</span>
+          <span style={{ color: "#133682" }}>
+            Clinically accurate health info, directly
+          </span>
+          {"\n"}
+          from <span style={{ color: "#133682" }}>doctors</span> with Quick{" "}
+          <span style={{ color: "#133682" }}>AI</span> Answers
         </Typography>
       </Box>
 
-      {/* Search */}
       <Box
         sx={{ flexGrow: 1, marginTop: { xs: "10px", sm: "24px", md: "49px" } }}
       >
@@ -175,6 +121,7 @@ const Hero = () => {
               placeholder="Search for Treatments, Doctors, or Hospitals"
               inputProps={{ "aria-label": "search" }}
               value={searchValue}
+              onClick={handleSearchClick}
               onChange={(e) => setSearchValue(e.target.value)}
               sx={{
                 width: "100%",
@@ -202,130 +149,132 @@ const Hero = () => {
             >
               <Search />
             </IconButton>
+            {/* Image at the top right of the search bar */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: { xs: "-75px", md: "-160px" },
+                right: "-10px",
+                animation: "heartbeat 1.5s infinite",
+              }}
+            >
+              <Image
+                src={handImage}
+                alt="Hand Image"
+                width={130}
+                height={168}
+                sizes="(max-width: 600px) 59px, 130px"
+                style={{ width: "auto", height: "auto" }}
+              />
+            </Box>
           </Box>
         </form>
       </Box>
 
       {/* MockUp Data */}
-      <Box sx={{ padding: "25px 0" }}>
-        <Box
-          sx={{
-            display: { xs: "block", md: "grid" },
-            gridTemplateColumns: "auto auto",
-            margin: { xs: "18px", md: "16px 75px" },
-            gap: 5,
-          }}
-        >
+      <Box
+        sx={{
+          display: { xs: "none", md: "grid" },
+          gridTemplateColumns: "auto auto",
+          margin: { xs: "18px", md: "16px 75px" },
+          gap: 5,
+          opacity: isSearchClicked ? 1 : 0,
+          transform: isSearchClicked ? "translateY(0)" : "translateY(-20px)",
+          transition: "opacity 0.5s ease, transform 0.5s ease",
+        }}
+      >
+        {isSearchClicked && (
           <Box
-            padding={{ xs: "14px 6px", sm: "14px 24px" }}
             sx={{
-              background: "#F2F2F2",
-              boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
-              borderRadius: "12px",
+              display: { xs: "block", md: "grid" },
+              gridTemplateColumns: "auto auto",
+              margin: { xs: "18px", md: "16px 75px" },
+              gap: 5,
             }}
           >
-            <Typography
-              padding={{ xs: "4px 0 16px 4px", sm: "6px 0 25px 0" }}
-              fontSize={{ xs: 18, sm: 22 }}
-              lineHeight="100%"
-              color={primaryColor}
-              variant="h5"
+            <Box
+              padding={{ xs: "14px 6px", sm: "14px 24px" }}
+              sx={{
+                background: "#F2F2F2",
+                boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
+                borderRadius: "12px",
+              }}
             >
-              Expert Doctors Opinion
-            </Typography>
-
-            <Box sx={{ display: "flex", gap: { xs: 1, sm: 2 } }}>
-              {images.map((img, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    position: "relative",
-                    width: "250px",
-                    height: { xs: "85px", sm: "150px" },
-                    cursor: "pointer",
-                    "&:hover .main-img": { opacity: 0 },
-                    "&:hover .preview-img": { opacity: 1 },
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src={img.main}
-                    alt={`Sample IMG${index + 1}`}
-                    className="main-img"
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: { xs: "10px", sm: "12px" },
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  />
-                  <Box
-                    component="img"
-                    src={img.preview}
-                    alt=""
-                    className="preview-img"
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "12px",
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      opacity: 0,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  />
-                </Box>
-              ))}
-            </Box>
-          </Box>
-
-          <Box
-            sx={{
-              paddingBottom: { xs: 3, md: 0 },
-              marginTop: { xs: "24px", md: 0 },
-              background: "#F2F2F2",
-              boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
-              borderRadius: "12px",
-              padding: { xs: "14px 8px", sm: "14px 24px" },
-            }}
-          >
-            <Box sx={{ textAlign: "center" }}>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <Box sx={{ width: { xs: "30px", sm: "54px" } }}>
-                  <AutoAwesome
-                    sx={{
-                      fontSize: { xs: "30px", sm: "54px" },
-                      color: primaryColor,
-                    }}
-                  />
-                </Box>
-              </Box>
               <Typography
-                fontSize={{ xs: 14, sm: 18 }}
-                padding="6px 0 24px 0"
+                padding={{ xs: "4px 0 16px 4px", sm: "6px 0 25px 0" }}
+                fontSize={{ xs: 18, sm: 22 }}
                 lineHeight="100%"
-                color="#000"
+                color={primaryColor}
                 variant="h5"
               >
-                We got your back
+                Expert Doctors Opinion
+              </Typography>
+              <Image
+                src={herodrop}
+                alt="Hero Drop"
+                layout="responsive"
+                width={900}
+                height={600}
+                style={{ width: "100%", maxWidth: "900px", height: "auto" }}
+              />
+            </Box>
+            <Box
+              sx={{
+                paddingBottom: { xs: 3, md: 0 },
+                marginTop: { xs: "24px", md: 0 },
+                background: "#F2F2F2",
+                boxShadow: "0px 0px 4px 0px rgba(0, 0, 0, 0.25)",
+                borderRadius: "12px",
+                width: "100%",
+              }}
+            >
+              <Typography
+                padding="18px 12px"
+                fontSize={{ xs: 18, sm: 22 }}
+                lineHeight="100%"
+                color={primaryColor}
+                variant="h5"
+              >
+                What AI says about your Questions?
+              </Typography>
+              <Typography
+                variant="body1"
+                paddingX={2}
+                fontSize={{ xs: "14px", sm: "16px" }}
+                sx={{
+                  color: "#454545",
+                  lineHeight: "26px",
+                  fontWeight: 400,
+                  letterSpacing: "0.8px",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "break-word",
+                  textOverflow: "ellipsis",
+                  textAlign: "justify",
+                }}
+              >
+                <TypingEffect
+                  text="AI provides accurate, personalized health insights, addressing your medical concerns with reliable, data-driven answers tailored for your well-being!"
+                  speed={50}
+                />
               </Typography>
             </Box>
-            <Typography
-              padding="0 4px"
-              fontSize={{ xs: 12, sm: 18 }}
-              color="#333333"
-            >
-              To begin the process, simply tap on the “Get a Call” button, and
-              our team will promptly connect with you to offer personalized
-              support tailored to your unique needs.
-            </Typography>
           </Box>
-        </Box>
+        )}
       </Box>
+
+      <style jsx>{`
+        @keyframes heartbeat {
+          0% {
+            transform: scale(1);
+          }
+          20% {
+            transform: scale(1.1);
+          }
+          40% {
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </Box>
   );
 };
