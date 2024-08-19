@@ -564,7 +564,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AICard from "./AICard"; // Update with actual path
 import VideosLoad from "./ShimmerUI/VideosLoad"; // Update with actual path
 import MobileAICard from "./MobileAICard"; // Update with actual path
-import LeadGenerationForm from "../../components/common/Lead-Generation"; // Update with actual path
+import LeadGenerationForm from "../../Components/common/Lead-Generation"; // Update with actual path
 import NavBar from "../../Components/NavBar";
 import { useState } from "react";
 
