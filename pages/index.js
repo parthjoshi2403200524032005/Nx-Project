@@ -1,13 +1,17 @@
-import Link from 'next/link';
-import Home from '../Components/Home'
-import NavBar from '../Components/NavBar'
+import Head from 'next/head';
+import Home from './home.jsx';
 
 
 export default function HomePage() {
   return (
-    <div>
-    <NavBar/>
-     <Home/>
-  </div>
+    <>
+      <Head>
+        <title>Home Page - HealthMudraa</title>
+        <meta name="description" content="Welcome to HealthMudraa" />
+        <link rel="canonical" href="/" />
+      </Head>
+      <Home />
+    </>
   );
 }
+

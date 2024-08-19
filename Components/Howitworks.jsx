@@ -275,23 +275,23 @@ const HowItWorks = () => {
               fontFamily: 'Arial',
               fontSize: '16.929px',
               fontWeight: '400',
-              lineHeight: '24.453px',
+              lineHeight: '25.453px',
               letterSpacing: '0.846px',
               textTransform: 'capitalize',
             }}
           >
             Schedule a consultation with the doctor of your choice
           </p>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center" style={{marginLeft:'100px', marginTop:'12px'}}>
             <Image
               src={hww4i}
               alt=""
               style={{
-                width: '40%',
+                width: '60%',
               }}
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center" style={{marginLeft:'60px'}}>
             <Image
               src={hww3}
               alt=""

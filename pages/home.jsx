@@ -1,12 +1,11 @@
-// pages/home.jsx
 import Head from "next/head";
-import Howitworks from "../components/Howitworks";
-import FrequentlyAskedQuestions from "../components/FrequentlyAskedQuestions";
-import Needhelp from "../components/Needhelp";
-import Partners from "../components/Partners";
-import Hero from "../components/Hero";
-import Pricing from "../components/Pricing";
-import HomePageVideos from "../components/HomePageVideos";
+import Howitworks from "../Components/Howitworks";
+import FrequentlyAskedQuestions from "../Components/FrequentlyAskedQuestions";
+import Needhelp from "../Components/Needhelp";
+import Partners from "../Components/Partners";
+import Hero from "../Components/Hero";
+import Pricing from "../Components/Pricing";
+import HomePageVideos from "../Components/HomePageVideos";
 import { Mixpanel } from "../utils/MixPanel";
 import NavBar from "../Components/NavBar";
 
