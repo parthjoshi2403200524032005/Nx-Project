@@ -3,9 +3,10 @@ import { Axiosinstance } from "./AxiosInterceptors";
 // ${aws_url}/
 
 // const url = process.env.REACT_APP_BASE_URL;
-// const url='http://localhost:8080';
+const url='http://localhost:8080';
+
 // const url='https://health-mudhra-backend.vercel.app';
-const url='https://healthmudraa-backend.vercel.app';
+// const url='https://healthmudraa-backend.vercel.app';
 
 export const aws_url =
   "https://healthmudraa-assets.s3.ap-south-1.amazonaws.com";
