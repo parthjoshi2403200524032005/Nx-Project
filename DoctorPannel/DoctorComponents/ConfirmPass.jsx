@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 const ConfirmPass = () => {
   const theme = createTheme({
-    palette: { 
+    palette: {
       type: "light",
       primary: {
         main: "#133680",
