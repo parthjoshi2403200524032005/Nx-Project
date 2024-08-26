@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { userHomePage } from "../Service/Services"; // Adjust path if needed
+import { userHomePage } from "../Service/Services.jsx"; 
 import toast from "react-hot-toast";
 import { HMCard, VideoShareWrapper } from "../Components/DoctorCard/DoctorCardStyles"; // Adjust path if needed
 import { Flex, FlexCol } from "../styles/CommonStyles";

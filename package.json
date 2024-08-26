@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@svgr/webpack": "^8.1.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21",

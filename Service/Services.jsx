@@ -4,8 +4,9 @@ import { Axiosinstance } from "./AxiosInterceptors";
 
 // const url = process.env.REACT_APP_BASE_URL;
 // const url='http://localhost:8080';
-// const url='https://health-mudhra-backend.vercel.app';
-const url='https://healthmudraa-backend.vercel.app';
+
+const url='https://health-mudhra-backend.vercel.app';
+// const url='https://healthmudraa-backend.vercel.app';
 
 export const aws_url =
   "https://healthmudraa-assets.s3.ap-south-1.amazonaws.com";
@@ -19,14 +20,14 @@ export const doctorSignup = async (data) => {
 };
 
 // export const AiSearch = async (data) => {
-  // return await Axiosinstance.post(`${url}/homepage/ai-search`, {
-  //   search: data,
-  // });
-  
+// return await Axiosinstance.post(`${url}/homepage/ai-search`, {
+//   search: data,
+// });
+
 // };
 export const AiSearch = async (data) => {
-    return await Axiosinstance.post(`https://healthmudraa-backend.vercel.app/homepage/ai-search`, { search: data });
-  };
+  return await Axiosinstance.post(`https://healthmudraa-backend.vercel.app/homepage/ai-search`, { search: data });
+};
 
 
 export const createLeads = async (data) => {
@@ -54,10 +55,17 @@ export const userSignup = async (data) => {
 };
 
 export const userHomePage = async (searchTerm = "") => {
-  return await Axiosinstance.get(
-    `${url}/homepage${searchTerm ? `?searchTerm=${searchTerm}` : ""}`
-  );
+  try {
+    const response = await Axiosinstance.get(
+      `${url}/homepage${searchTerm ? `?searchTerm=${searchTerm}` : ""}`
+    );
+    return response;
+  } catch (error) {
+    console.error('There was an error making the request:', error);
+    throw error; // Re-throw the error if you want to handle it higher up
+  }
 };
+
 export const videoHomePage = async (videocode) => {
   return await Axiosinstance.get(
     `${url}/homepage/videos?videocode=${videocode}`
