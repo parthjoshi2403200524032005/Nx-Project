@@ -1,20 +1,16 @@
-
-
-import { defineConfig } from 'next';
-
-export default defineConfig({
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
     return [
       {
-        source: '/search',
-        destination: '/search',
+        source: "/search",
+        destination: "/search",
       },
       {
-        source: '/search:query',
-        destination: '/search:query',
+        source: "/search:query",
+        destination: "/search:query",
       },
     ];
   },
-});
+};
