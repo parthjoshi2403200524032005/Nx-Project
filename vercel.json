@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      {
+        "source": "/search",
+        "destination": "/search"
+      },
+      {
+        "source": "/search:query",
+        "destination": "/search:query"
+      }
+    ]
+  }
