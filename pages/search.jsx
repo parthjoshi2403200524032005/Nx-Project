@@ -559,11 +559,11 @@
 import { Box, IconButton, InputBase, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { AiSearch } from "../Service/Services"; // Update with actual path
-import VideoCard from "../Components/search/VideoCard"; // Update with actual path
+import VideoCard from "./search/VideoCard"; // Update with actual path
 import SearchIcon from "@mui/icons-material/Search";
-import AICard from "../Components/search/AICard"; // Update with actual path
-import VideosLoad from "../Components/search/ShimmerUI/VideosLoad"; // Update with actual path
-import MobileAICard from "../Components/search/MobileAICard"; // Update with actual path
+import AICard from "./search/AICard"; // Update with actual path
+import VideosLoad from "./search/ShimmerUI/VideosLoad"; // Update with actual path
+import MobileAICard from "./search/MobileAICard"; // Update with actual path
 import LeadGenerationForm from "../Components/common/Lead-Generation"; // Update with actual path
 // import NavBar from "../Components/NavBar";
 import { useState } from "react";
