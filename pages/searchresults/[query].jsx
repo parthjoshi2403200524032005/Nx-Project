@@ -576,9 +576,9 @@ const Searchresults = ({ apiResults, searchInput }) => {
 
   const handleSearch = () => {
     if (inputValue.trim() === "") {
-      router.push(`/search/doctor`);
+      router.push(`/search/doctor`); // Redirect to a default search page
     } else {
-      router.push(`/searchresults/${inputValue}`);
+      router.push(`/searchresults/${inputValue}`); // Redirect with the search query
     }
   };
 

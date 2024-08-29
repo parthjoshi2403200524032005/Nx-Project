@@ -1,15 +1,14 @@
 module.exports = {
   reactStrictMode: true,
-  swcMinify: true,
   async rewrites() {
     return [
       {
-        source: "/search",
-        destination: "/search",
+        source: '/search',
+        destination: '/search', // Handle static path
       },
       {
-        source: "/searchresults",
-        destination: "/searchresults",
+        source: '/searchresults/:path*',
+        destination: '/searchresults/:path*', // Handle dynamic paths
       },
     ];
   },

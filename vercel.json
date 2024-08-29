@@ -1,12 +1,12 @@
 {
-    "rewrites": [
-      {
-        "source": "/search",
-        "destination": "/search"
-      },
-      {
-        "source": "/searchresults",
-        "destination": "/searchresults"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/search",
+      "destination": "/search"
+    },
+    {
+      "source": "/searchresults",
+      "destination": "/searchresults"
+    }
+  ]
+}
