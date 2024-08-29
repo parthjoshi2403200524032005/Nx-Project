@@ -570,7 +570,7 @@ import { useState } from "react";
 
 const primaryColor = "#133682";
 
-const Search = ({ apiResults, searchInput }) => {
+const Searchresults = ({ apiResults, searchInput }) => {
   const [inputValue, setInputValue] = useState(searchInput || "");
   const router = useRouter();
 
@@ -578,7 +578,7 @@ const Search = ({ apiResults, searchInput }) => {
     if (inputValue.trim() === "") {
       router.push(`/search/doctor`);
     } else {
-      router.push(`/search/${inputValue}`);
+      router.push(`/searchresults/${inputValue}`);
     }
   };
 
@@ -837,4 +837,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default Search;
+export default Searchresults;

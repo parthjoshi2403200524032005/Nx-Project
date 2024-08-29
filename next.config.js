@@ -8,8 +8,8 @@ module.exports = {
         destination: "/search",
       },
       {
-        source: "/search:query",
-        destination: "/search:query",
+        source: "/searchresults",
+        destination: "/searchresults",
       },
     ];
   },
