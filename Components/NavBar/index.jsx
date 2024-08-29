@@ -322,14 +322,14 @@ const NavBar = () => {
                 flexGrow: 1,  // This will center the links
               }}
             >
-              <Link href="/home" passHref>
+              <Link href="https://live-frontend-project.vercel.app/" passHref>
                 <Typography
                   sx={{ ...CustomStyles.navLink, color: 'inherit', marginLeft: '2rem' }}
                 >
                   Home
                 </Typography>
               </Link>
-              <Link href="/videos" passHref>
+              <Link href="https://live-frontend-project.vercel.app/videos" passHref>
                 <Typography
                   sx={{ ...CustomStyles.navLink, color: 'inherit', marginLeft: '2rem' }}
                 >
@@ -343,14 +343,14 @@ const NavBar = () => {
                   Services
                 </Typography>
               </Link>
-              <Link href="/plans" passHref>
+              <Link href="https://live-frontend-project.vercel.app/plans" passHref>
                 <Typography
                   sx={{ ...CustomStyles.navLink, color: 'inherit', marginLeft: '2rem' }}
                 >
                   Plans
                 </Typography>
               </Link>
-              <Link href="/about" passHref>
+              <Link href="https://live-frontend-project.vercel.app/about" passHref>
                 <Typography
                   sx={{ ...CustomStyles.navLink, color: 'inherit', marginLeft: '2rem' }}
                 >

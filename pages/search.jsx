@@ -565,7 +565,7 @@ import AICard from "./search/AICard"; // Update with actual path
 import VideosLoad from "./search/ShimmerUI/VideosLoad"; // Update with actual path
 import MobileAICard from "./search/MobileAICard"; // Update with actual path
 import LeadGenerationForm from "../Components/common/Lead-Generation"; // Update with actual path
-// import NavBar from "../Components/NavBar";
+import NavBar from "../Components/NavBar";
 import { useState } from "react";
 
 const primaryColor = "#133682";
@@ -586,7 +586,7 @@ const Search = ({ apiResults, searchInput }) => {
 
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       {/* <h1>Search Results for: {inputValue}</h1> */}
       <Box
         borderRadius={2}
