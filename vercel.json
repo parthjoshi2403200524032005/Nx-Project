@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "https://live-frontend-project.vercel.app/$1"
+      }
+    ]
+  }
+  
