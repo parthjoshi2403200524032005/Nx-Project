@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import "../styles/globals.css"
+import Footer from '../Components/Footer';
 
 const DynamicRouter = dynamic(
   () => import('react-router-dom').then((mod) => mod.BrowserRouter),
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <DynamicRouter>
       <Component {...pageProps} />
+      <Footer/>
     </DynamicRouter>
   );
 }
